@@ -68,7 +68,19 @@ Após a inicialização, os serviços estarão disponíveis nos seguintes endere
     # Resposta esperada: Quarkus service is up and running!
     ```
 
-## 📊 Análise Preliminar (Semana 1)
+## 🧪 Testes e Qualidade
+
+### `go-service`
+* **Tecnologia:** Testes unitários com o pacote `testing` nativo do Go.
+* **Execução Local:** Na pasta `go-service`, rode `make test`.
+* **Relatório de Cobertura:** Na pasta `go-service`, rode `make coverage` para gerar um `coverage.html`.
+* **Portão de Qualidade:** Os testes são executados automaticamente durante o `docker compose up --build`. Se um teste falhar, a imagem Docker do `go-app` não é criada.
+
+### `quarkus-service`
+* _(A ser implementado)_
+
+
+## 📊 Análise
 
 As observações e métricas recolhidas após a configuração inicial do projeto:
 
@@ -76,7 +88,8 @@ As observações e métricas recolhidas após a configuração inicial do projet
 | Cenário | Tempo Total | Notas |
 | :--- | :--- | :--- |
 | **Build com Cache Frio** | **~83.3 segundos** | Simula a primeira execução num ambiente novo. A maior parte do tempo foi gasta a descarregar as dependências Maven do Quarkus. |
-| **Build com Cache Quente** | **~1.1 segundos** | Simula um rebuild sem alterações no código. Demonstra a eficiência do cache do Docker. |
+| **Build com Cache Quente (Sem Testes)** | **~1.1 segundos** | Simula um rebuild sem alterações no código, antes da adição dos testes ao build. |
+| **Build com Cache Quente (Com Testes Go)** | **~2.0 segundos** | Mede o impacto de adicionar o portão de qualidade (`RUN go test`) ao build incremental. |
 
 ### Tempo de Inicialização da Aplicação (Startup)
 * **Go:** Praticamente instantâneo (< 0.1s).
