@@ -1,0 +1,10 @@
+# Ficheiros do MacOS
+.DS_Store
+
+# Ficheiros de IDEs
+.idea/
+.vscode/
+
+# Ficheiros de build (opcional, já que os serviços têm os seus próprios .dockerignore)
+/target/
+/build/

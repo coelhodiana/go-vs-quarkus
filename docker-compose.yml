@@ -1,0 +1,22 @@
+# A secção onde definimos todos os nossos serviços (contêineres)
+services:
+
+  # Definição do nosso serviço em Go
+  go-app:
+    container_name: go-app
+    build:
+      # O 'context' diz ao Docker onde encontrar o Dockerfile e os ficheiros do serviço
+      context: ./go-service
+    ports:
+      # Mapeia a porta 8081 do seu computador (host) para a porta 8081 do contêiner
+      - "8081:8081"
+
+  # Definição do nosso serviço em Quarkus
+  quarkus-app:
+    container_name: quarkus-app
+    build:
+      # O contexto para o serviço Quarkus
+      context: ./quarkus-service
+    ports:
+      # Mapeia a porta 8080 do seu computador (host) para a porta 8080 do contêiner
+      - "8080:8080"
