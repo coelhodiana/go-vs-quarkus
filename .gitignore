@@ -1,10 +1,53 @@
-# Ficheiros do MacOS
+# Ficheiros de Sistema Operativo, Editores e IDEs
+#----------------------------------------------------
+# OSX
 .DS_Store
 
-# Ficheiros de IDEs
+# Vim
+*.swp
+*.swo
+
+# IntelliJ
 .idea/
+*.ipr
+*.iml
+*.iws
+
+# Eclipse
+.project
+.classpath
+.settings/
+.factorypath
+
+# NetBeans
+nb-configuration.xml
+
+# Visual Studio Code
 .vscode/
 
-# Ficheiros de build (opcional, já que os serviços têm os seus próprios .dockerignore)
-/target/
-/build/
+# Ficheiros de Patch, Ambiente Local e Logs
+#----------------------------------------------------
+*.orig
+*.rej
+.env
+*.log
+build.log
+
+
+# Artefactos Específicos dos Serviços
+#----------------------------------------------------
+# Go Service (Gerados localmente)
+go-service/coverage.out
+go-service/coverage.html
+
+# Quarkus Service (Build, Logs, etc.)
+quarkus-service/target/
+quarkus-service/build/
+quarkus-service/bin/
+quarkus-service/pom.xml.tag
+quarkus-service/pom.xml.releaseBackup
+quarkus-service/pom.xml.versionsBackup
+quarkus-service/release.properties
+quarkus-service/.flattened-pom.xml
+quarkus-service/.quarkus/
+quarkus-service/.certs/
