@@ -35,7 +35,7 @@ Todo o ambiente é gerido pelo Docker Compose, garantindo consistência e uma co
 
 1.  **Clone o Repositório:**
     ```bash
-    git clone [URL_DO_SEU_REPOSITORIO]
+    git clone https://github.com/coelhodiana/go-vs-quarkus
     cd go-vs-quarkus
     ```
 
