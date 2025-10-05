@@ -95,6 +95,16 @@ As observações e métricas recolhidas após a configuração inicial do projet
 * **Go:** Praticamente instantâneo (< 0.1s).
 * **Quarkus (JVM):** Extremamente rápido para o padrão Java, registando um tempo de **~0.4s**.
 
-### Conclusões Iniciais
+### Tamanho da Imagem Final
+A análise das imagens finais construídas pelo Docker revela uma diferença drástica, que impacta diretamente o tempo de deployment e o custo de armazenamento de artefactos.
+
+| Serviço | Tamanho da Imagem | Notas |
+| :--- | :--- | :--- |
+| **`go-app`** | **~24 MB** | A imagem contém apenas o binário estático compilado e uma base mínima do Alpine Linux. Não há dependências externas. |
+| **`quarkus-app`** | **~469 MB** | A imagem precisa de incluir a Java Runtime Environment (JRE) completa, além do JAR da aplicação e de todas as suas dependências. |
+
+
+### Conclusões
 * **Experiência do Developer (Build):** O ecossistema Go proporciona um ciclo de build drasticamente mais rápido, tanto com cache frio como quente. A complexidade do Maven e o número de dependências do Quarkus resultam num primeiro build significativamente mais lento.
 * **Complexidade de Configuração:** O projeto Go exigiu menos ficheiros de configuração. O projeto Quarkus, embora gerado automaticamente, envolveu a resolução de mais problemas de configuração de build (versão do compilador, ficheiros ocultos, `.dockerignore`).
+* **Tamanho da Imagem Docker:** A imagem do serviço Go (~24 MB) é quase **20 vezes mais leve** que a imagem do Quarkus/JVM (~469 MB), uma diferença crucial para a agilidade em pipelines de CI/CD e custos de armazenamento.
