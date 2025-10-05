@@ -13,6 +13,9 @@ RUN go mod download
 # Agora copiamos o resto do código-fonte
 COPY *.go ./
 
+# Executa os testes. Se falharem, o build para aqui.
+RUN go test ./...
+
 # Compilamos a nossa aplicação num único ficheiro binário estático.
 # Isto é otimizado para correr em Linux (o ambiente padrão dos contêineres).
 RUN CGO_ENABLED=0 GOOS=linux go build -o /go-app-binary .
